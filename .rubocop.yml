@@ -1,0 +1,25 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-capybara
+
+AllCops:
+  Exclude:
+    - 'config.ru'
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'config/**/*'
+    - 'db/**/*'
+    - 'bin/**/*'
+
+Rails:
+  Enabled: true
+
+Style/HashSyntax:
+  EnforcedShorthandSyntax: either
+
+Metrics/AbcSize:
+  Max: 37
+
+Metrics/MethodLength:
+  Max: 28
