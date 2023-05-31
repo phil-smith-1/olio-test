@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe S3DownloadService, :vcr do
-
   let(:success_params) do
     {
       bucket: ENV['AWS_BUCKET_NAME'],
@@ -13,7 +14,7 @@ RSpec.describe S3DownloadService, :vcr do
     {
       bucket: ENV['AWS_BUCKET_NAME'],
       key: ENV['AWS_OBJECT_NAME'],
-      modification_date: Time.new(2023, 05, 31, 0, 0, 0)
+      modification_date: Time.new(2023, 5, 31, 0, 0, 0, +1)
     }
   end
 
@@ -32,15 +33,15 @@ RSpec.describe S3DownloadService, :vcr do
       end
     end
 
-    it "raises not modified error if file has not been modified" do
+    it 'raises not modified error if file has not been modified' do
       VCR.use_cassette('s3_download_not_modified') do
-        expect{described_class.new(not_modified_params).download}.to raise_error(Aws::S3::Errors::NotModified)
+        expect { described_class.new(not_modified_params).download }.to raise_error(Aws::S3::Errors::NotModified)
       end
     end
 
-    it "raises does not exist error if file has not been modified" do
+    it 'raises does not exist error if file has not been modified' do
       VCR.use_cassette('s3_download_invalid') do
-        expect{described_class.new(invalid_params).download}.to raise_error(Aws::S3::Errors::AccessDenied)
+        expect { described_class.new(invalid_params).download }.to raise_error(Aws::S3::Errors::AccessDenied)
       end
     end
   end
