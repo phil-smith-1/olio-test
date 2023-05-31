@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://olio-staging-images.s3.eu-west-1.amazonaws.com/developer/test-articles-v4.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.173.1 ruby/3.2.2 arm64-darwin22 aws-sdk-s3/1.122.0
+      If-Modified-Since:
+      - Tue, 30 May 2023 23:00:00 GMT
+      Host:
+      - olio-staging-images.s3.eu-west-1.amazonaws.com
+      X-Amz-Date:
+      - 20230531T144638Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAXEGEELWJHNRPN6HX/20230531/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;if-modified-since;x-amz-content-sha256;x-amz-date, Signature=d0009ebf62290523ff8094380a2f79d8aea163e3e08ced69085898f3e680ca77
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 304
+      message: Not Modified
+    headers:
+      X-Amz-Id-2:
+      - T7COT4I/dU6dLrwX8soZCXOK+ZvmJzV9jZ9omsOIHmoUUq0KDopN5Ic4X266B8gvgDmVEUI2kY8=
+      X-Amz-Request-Id:
+      - ZC6ZS0WCFD72PQNF
+      Date:
+      - Wed, 31 May 2023 14:46:39 GMT
+      Last-Modified:
+      - Tue, 05 Jan 2021 13:13:11 GMT
+      Etag:
+      - '"b6b94be00bff046fe3ba47fe9a41773e"'
+      X-Amz-Version-Id:
+      - 8yjMsoigwzN8ZPvRVQVuHG7a8ZRDlVB8
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Wed, 31 May 2023 14:46:38 GMT
+recorded_with: VCR 6.1.0

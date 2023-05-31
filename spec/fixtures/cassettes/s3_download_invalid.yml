@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://olio-staging-images.s3.eu-west-1.amazonaws.com/does_not_exist
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.173.1 ruby/3.2.2 arm64-darwin22 aws-sdk-s3/1.122.0
+      Host:
+      - olio-staging-images.s3.eu-west-1.amazonaws.com
+      X-Amz-Date:
+      - 20230531T150134Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAXEGEELWJHNRPN6HX/20230531/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=3eac368f1efb2e367084f332e3978b0735ad245967f4fe2b6cae4d93580a5504
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      X-Amz-Request-Id:
+      - FXD4837023F1B0M3
+      X-Amz-Id-2:
+      - H76g6EQCV3j85BB/FVb4PjZyYk3dHua+stpwQrbr4K2JDQcWavnIoTghriHsW4ThzQN2b+W3quc=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 31 May 2023 15:01:34 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <Error><Code>AccessDenied</Code><Message>Access Denied</Message><RequestId>FXD4837023F1B0M3</RequestId><HostId>H76g6EQCV3j85BB/FVb4PjZyYk3dHua+stpwQrbr4K2JDQcWavnIoTghriHsW4ThzQN2b+W3quc=</HostId></Error>
+  recorded_at: Wed, 31 May 2023 15:01:35 GMT
+recorded_with: VCR 6.1.0
