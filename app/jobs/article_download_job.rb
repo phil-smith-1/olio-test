@@ -9,15 +9,13 @@ class ArticleDownloadJob
   end
 
   def run
-    begin
-      response = downloader.download
-      articles = parse(response)
-      update_articles(articles)
-    rescue Aws::S3::Errors::NotModified
-      puts 'File not modified'
-    rescue Aws::S3::Errors::AccessDenied
-      puts 'Access Denied, object may not exist'
-    end
+    response = downloader.download
+    articles = parse(response)
+    update_articles(articles)
+  rescue Aws::S3::Errors::NotModified
+    Rails.logger.info 'File not modified'
+  rescue Aws::S3::Errors::AccessDenied
+    Rails.logger.info 'Access Denied, object may not exist'
   end
 
   private

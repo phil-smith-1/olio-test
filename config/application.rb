@@ -18,5 +18,7 @@ module Rails7PgBootstrap
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    Rails.logger = Logger.new(STDOUT)
+    config.logger = ActiveSupport::Logger.new("log/#{Rails.env}.log")
   end
 end

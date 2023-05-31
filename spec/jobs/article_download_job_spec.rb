@@ -66,7 +66,7 @@ RSpec.describe ArticleDownloadJob do
     )
   end
 
-  before(:each) do
+  before do
     allow(S3DownloadService).to receive(:new).and_return(downloader_double)
     allow(downloader_double).to receive(:download).and_return(downloader_response)
   end
@@ -78,13 +78,13 @@ RSpec.describe ArticleDownloadJob do
   describe '.run' do
     describe 'when the articles do not exist' do
       it 'creates new Articles' do
-        expect { described_class.new.run }.to change { Article.count }.by(2)
+        expect { described_class.new.run }.to change(Article, :count).by(2)
       end
     end
 
     describe 'when the articles exist' do
       it 'does not create new Articles' do
-        expect { described_class.new.run }.to change { Article.count }.by(0)
+        expect { described_class.new.run }.to change(Article, :count).by(0)
       end
     end
 
@@ -107,7 +107,7 @@ RSpec.describe ArticleDownloadJob do
       end
 
       it 'does not call private methods' do
-        expect { described_class.new.run }.to change { Article.count }.by(0)
+        expect { described_class.new.run }.to change(Article, :count).by(0)
       end
     end
   end
