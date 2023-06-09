@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: %i[show]
   before_action :download_articles, only: %i[index show]
+  before_action :set_article, only: %i[show]
 
   # GET /articles or /articles.json
   def index

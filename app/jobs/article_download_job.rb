@@ -12,16 +12,12 @@ class ArticleDownloadJob
     response = downloader.download
     articles = parse(response)
     update_articles(articles)
-  rescue Aws::S3::Errors::NotModified
-    Rails.logger.info 'File not modified'
-  rescue Aws::S3::Errors::AccessDenied
-    Rails.logger.info 'Access Denied, object may not exist'
   end
 
   private
 
   def parse(response)
-    JSON.parse(response.body.read)
+    JSON.parse(response)
   end
 
   def update_articles(articles)

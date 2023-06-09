@@ -25,23 +25,25 @@ RSpec.describe S3DownloadService, :vcr do
     }
   end
 
+  let(:success_body) { file_fixture('s3_download_response.json').read }
+
   describe '.download' do
     it 'returns successfully' do
       VCR.use_cassette('s3_download_success') do
         response = described_class.new(success_params).download
-        expect(response.body).to be_a(StringIO)
+        expect(response).to eq(success_body)
       end
     end
 
-    it 'raises not modified error if file has not been modified' do
+    it 'returns an empty JSON list if file has not been modified' do
       VCR.use_cassette('s3_download_not_modified') do
-        expect { described_class.new(not_modified_params).download }.to raise_error(Aws::S3::Errors::NotModified)
+        expect(described_class.new(not_modified_params).download).to eq('[]')
       end
     end
 
-    it 'raises does not exist error if file has not been modified' do
+    it 'returns an empty JSON list if file does not exist' do
       VCR.use_cassette('s3_download_invalid') do
-        expect { described_class.new(invalid_params).download }.to raise_error(Aws::S3::Errors::AccessDenied)
+        expect(described_class.new(invalid_params).download).to eq('[]')
       end
     end
   end
