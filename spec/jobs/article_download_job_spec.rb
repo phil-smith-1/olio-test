@@ -64,10 +64,10 @@ RSpec.describe ArticleDownloadJob do
     allow(downloader_double).to receive(:download).and_return(downloader_response)
   end
 
-  describe '.run' do
+  describe '.perform' do
     describe 'when the articles do not exist' do
       it 'creates new Articles' do
-        expect { described_class.new.run }.to change(Article, :count).by(2)
+        expect { described_class.new.perform }.to change(Article, :count).by(2)
       end
     end
 
@@ -78,14 +78,14 @@ RSpec.describe ArticleDownloadJob do
       end
 
       it 'does not create new Articles' do
-        expect { described_class.new.run }.to change(Article, :count).by(0)
+        expect { described_class.new.perform }.to change(Article, :count).by(0)
       end
     end
 
     describe 'when an article is out of date' do
       before do
         create :article, :out_of_date
-        described_class.new.run
+        described_class.new.perform
       end
 
       it 'updates the article' do
@@ -99,7 +99,7 @@ RSpec.describe ArticleDownloadJob do
       end
 
       it 'does not create anything' do
-        expect { described_class.new.run }.to change(Article, :count).by(0)
+        expect { described_class.new.perform }.to change(Article, :count).by(0)
       end
     end
   end

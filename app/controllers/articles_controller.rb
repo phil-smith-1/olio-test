@@ -38,6 +38,6 @@ class ArticlesController < ApplicationController
       key: ENV['AWS_OBJECT_NAME'],
       modification_date: last_modification
     )
-    ArticleDownloadJob.new(downloader: downloader).run
+    ArticleDownloadJob.new(downloader: downloader).perform
   end
 end

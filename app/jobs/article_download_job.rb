@@ -8,7 +8,7 @@ class ArticleDownloadJob
     @downloader ||= opts[:downloader] || S3DownloadService.new(config)
   end
 
-  def run
+  def perform
     response = downloader.download
     articles = parse(response)
     update_articles(articles)
