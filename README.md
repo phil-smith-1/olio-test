@@ -52,7 +52,7 @@ I made several choices and assumptions during the development process, many of w
   - No
 
 ## Future Improvements
-1. More testing (Controller tests and Feature tests)
+1. More testing (~~Controller tests~~ and Feature tests)
 2. Large datasets could lead to performance issues. In this case, run the download job asynchronously to protect the system.
 3. Flesh out article pages with more data (if stable)
 4. Update to a more sophisticated UI/Design
